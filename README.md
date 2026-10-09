@@ -1,27 +1,37 @@
-# Google automation test
+# My First Playwright Automation Test
 
-Automatyczne testy end-to-end napisane w [Playwright](https://playwright.dev/) (TypeScript).
-Testy uruchamiają się w trzech przeglądarkach: Chromium, Firefox i WebKit.
+Mój pierwszy projekt testów automatycznych, napisany w [Playwright](https://playwright.dev/) (TypeScript).
+Jestem testerką manualną i uczę się automatyzacji. Testy sprawdzają stronę playwright.dev
+w trzech przeglądarkach: Chromium, Firefox i WebKit.
 
-## Testy
+## Przypadki testowe
 
-Plik `tests/prod-tests.spec.ts`:
+Plik `tests/wyszukiwarka.spec.ts`:
 
-| Test | Co sprawdza |
-| --- | --- |
-| `has title` | Tytuł strony playwright.dev zawiera „Playwright”. |
-| `get started link` | Link „Get started” prowadzi do strony z nagłówkiem „Installation”. |
-| `CLI section scroll to bottom` | Link „CLI” w górnym menu otwiera sekcję CLI, a po przewinięciu na sam dół widać stopkę. |
+**TC-01: Wyszukiwanie istniejącej frazy (test pozytywny)**
+1. Otwórz https://playwright.dev
+2. Kliknij „Search”
+3. Wpisz `locators`
+4. Kliknij pierwszy wynik
 
-## Wymagania
+Oczekiwany rezultat: otwiera się strona z nagłówkiem „Locators”.
 
-- [Node.js](https://nodejs.org/) w wersji LTS
+**TC-02: Wyszukiwanie nieistniejącej frazy (test negatywny)**
+1. Otwórz https://playwright.dev
+2. Kliknij „Search”
+3. Wpisz `xyzqwerty123`
+
+Oczekiwany rezultat: pojawia się komunikat „No results found for…”.
+
+Plik `tests/example.spec.ts` to przykładowe testy wygenerowane przez Playwright przy instalacji.
 
 ## Uruchomienie
 
+Wymagany [Node.js](https://nodejs.org/) w wersji LTS.
+
 ```bash
-git clone <adres-repozytorium>
-cd google-automation-test
+git clone https://github.com/madzium/my-first-playwright-automation-test.git
+cd my-first-playwright-automation-test
 npm ci
 npx playwright install
 npx playwright test
@@ -31,11 +41,14 @@ Przydatne komendy:
 
 ```bash
 npx playwright test --ui        # tryb interaktywny
-npx playwright test --headed    # z widocznym oknem przeglądarki
 npx playwright show-report      # raport HTML z ostatniego uruchomienia
 ```
 
 ## CI
 
-Workflow `.github/workflows/playwright.yml` uruchamia testy w GitHub Actions przy każdym pushu
-i pull requeście. Wyniki widać w zakładce **Actions** repozytorium.
+Testy uruchamiają się automatycznie w GitHub Actions po każdym pushu (zakładka **Actions**).
+
+## Uwagi mile widziane
+
+To moje pierwsze kroki w automatyzacji, więc chętnie przeczytam każdą uwagę.
+Napisz w zakładce **Discussions** albo dodaj komentarz do konkretnej linijki kodu.
