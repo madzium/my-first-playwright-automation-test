@@ -10,14 +10,14 @@ test.describe('Wyszukiwarka dokumentacji', () => {
     await page.getByRole('button', { name: 'Search' }).click();
 
     // Krok 2: wpisz szukaną frazę
-    await page.getByRole('searchbox').fill('locators');
+    await page.getByRole('searchbox').fill('Locators');
 
     // Krok 3: kliknij pierwszy wynik na liście
     await page.getByRole('option').first().click();
 
     // Oczekiwany rezultat: otwarta strona "Locators"
     await expect(page).toHaveURL(/locators/);
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('locators');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Locators');
   });
 
   test('pokazuje komunikat, gdy nic nie znaleziono', async ({ page }) => {
